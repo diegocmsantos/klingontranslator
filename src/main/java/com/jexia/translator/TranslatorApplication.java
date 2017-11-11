@@ -48,7 +48,6 @@ public class TranslatorApplication implements CommandLineRunner {
                 List<String> translatedWord = dictionaryService.translate(wholeSentence);
 
                 System.out.println(String.join(" ", translatedWord));
-                System.out.println();
 
                 CharacterList characterList = speciesService.getCharacterList(wholeSentence);
                 String species = speciesService.getCharacterSpecies(characterList);
