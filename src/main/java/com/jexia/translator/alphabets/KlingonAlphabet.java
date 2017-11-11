@@ -8,6 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents the Klingon alphabet.
+ * Each alphabet is responsible for translate english into it.
+ */
 @Component
 public class KlingonAlphabet implements Alphabet {
 
@@ -17,6 +21,12 @@ public class KlingonAlphabet implements Alphabet {
         this.dictionary = createAlphabet();
     }
 
+    /**
+     * Translate an english sentence in a Klingon sentence
+     * @param word - String
+     * @return List - With each translated word
+     * @throws InvalidDictionaryCharacterException - If any char not exists in the alphabet
+     */
     @Override
     public List<String> translate(String word) throws InvalidDictionaryCharacterException {
 
