@@ -51,7 +51,8 @@ public class TranslatorApplication implements CommandLineRunner {
                 System.out.println();
 
                 CharacterList characterList = speciesService.getCharacterList(wholeSentence);
-                System.out.println();
+                String species = speciesService.getCharacterSpecies(characterList);
+                System.out.println(!species.isEmpty() ? species : "Species not found.");
 
             } catch (AlphabetNotFoundException e) {
                 System.out.println("Alphabet is not set in dictionary.");

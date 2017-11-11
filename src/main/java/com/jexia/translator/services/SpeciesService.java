@@ -1,6 +1,9 @@
 package com.jexia.translator.services;
 
+import com.jexia.translator.models.Character;
 import com.jexia.translator.models.CharacterList;
+import com.jexia.translator.models.CharacterRoot;
+import com.jexia.translator.models.CharacterSpecies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -31,4 +34,47 @@ public class SpeciesService {
         return characterList;
     }
 
+    public String getCharacterSpecies(CharacterList characterList) {
+
+        String characterSpeciesStr = "";
+        boolean found = false;
+
+        Character innerCharacter;
+        for (Character character : characterList.getCharacters()) {
+
+            innerCharacter = getCharacterByUID(character.getUid());
+
+            for (CharacterSpecies characterSpecies : innerCharacter.getCharacterSpecies()) {
+
+                if (characterSpecies.getName() != null && !characterSpecies.getName().isEmpty()) {
+                    characterSpeciesStr = characterSpecies.getName();
+                    found = true;
+                    break;
+                }
+
+            }
+
+            if (found) {
+                break;
+            }
+
+        }
+
+        return characterSpeciesStr;
+
+    }
+
+    private Character getCharacterByUID(String uid) {
+
+        String uidRequest = "uid=" + uid;
+
+        CharacterRoot characterRoot = this.restTemplate.getForObject(this.URL + "?" + uidRequest, CharacterRoot.class);
+
+        if (characterRoot != null) {
+            return characterRoot.getCharacter();
+        }
+
+        return new Character();
+
+    }
 }

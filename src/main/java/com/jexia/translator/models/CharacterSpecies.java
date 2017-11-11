@@ -1,12 +1,9 @@
 package com.jexia.translator.models;
 
-import java.util.List;
-
-public class Character {
+public class CharacterSpecies {
 
     private String uid;
     private String name;
-    private List<CharacterSpecies> characterSpecies;
 
     public String getUid() {
         return uid;
@@ -22,13 +19,5 @@ public class Character {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<CharacterSpecies> getCharacterSpecies() {
-        return characterSpecies;
-    }
-
-    public void setCharacterSpecies(List<CharacterSpecies> characterSpecies) {
-        this.characterSpecies = characterSpecies;
     }
 }
