@@ -1,0 +1,5 @@
+#!/bin/bash
+
+str="$*"
+# echo "$str"
+java -jar translator-0.0.1-SNAPSHOT.jar "$str"
