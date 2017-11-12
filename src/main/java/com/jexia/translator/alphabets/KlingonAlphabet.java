@@ -38,9 +38,11 @@ public class KlingonAlphabet implements Alphabet {
         String charStr;
 
         boolean lastChar = false;
+        boolean beforeLastChar = false;
         for (int i = 0; i < word.length(); i++) {
 
             lastChar = i == word.length() - 1;
+            beforeLastChar = i == word.length() - 2;
 
             c = word.charAt(i);
 
@@ -56,7 +58,10 @@ public class KlingonAlphabet implements Alphabet {
                         charStr = String.valueOf(word.charAt(i + 1));
                         stepsAhead = 1;
                     }
-                } else if ("t".equals(charStr)) {
+                }
+            }
+            if (!beforeLastChar) {
+                if ("t".equals(charStr)) {
                     charStr += String.valueOf(word.charAt(i + 1));
                     charStr += String.valueOf(word.charAt(i + 2));
                     stepsAhead = 2;
